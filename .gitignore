@@ -88,3 +88,121 @@ fastlane/test_output
 # https://github.com/johnno1962/injectionforxcode
 
 iOSInjectionProject/
+MarvelCharacters.xcworkspace/contents.xcworkspacedata
+MarvelCharacters.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+Pods/Manifest.lock
+Pods/Kingfisher/LICENSE
+Pods/Kingfisher/README.md
+Pods/Kingfisher/Sources/Cache/CacheSerializer.swift
+Pods/Kingfisher/Sources/Cache/DiskStorage.swift
+Pods/Kingfisher/Sources/Cache/FormatIndicatedCacheSerializer.swift
+Pods/Kingfisher/Sources/Cache/ImageCache.swift
+Pods/Kingfisher/Sources/Cache/MemoryStorage.swift
+Pods/Kingfisher/Sources/Cache/Storage.swift
+Pods/Kingfisher/Sources/Extensions/ImageView+Kingfisher.swift
+Pods/Kingfisher/Sources/Extensions/NSButton+Kingfisher.swift
+Pods/Kingfisher/Sources/Extensions/NSTextAttachment+Kingfisher.swift
+Pods/Kingfisher/Sources/Extensions/TVMonogramView+Kingfisher.swift
+Pods/Kingfisher/Sources/Extensions/UIButton+Kingfisher.swift
+Pods/Kingfisher/Sources/Extensions/WKInterfaceImage+Kingfisher.swift
+Pods/Kingfisher/Sources/General/KF.swift
+Pods/Kingfisher/Sources/General/KFOptionsSetter.swift
+Pods/Kingfisher/Sources/General/Kingfisher.swift
+Pods/Kingfisher/Sources/General/KingfisherError.swift
+Pods/Kingfisher/Sources/General/KingfisherManager.swift
+Pods/Kingfisher/Sources/General/KingfisherOptionsInfo.swift
+Pods/Kingfisher/Sources/General/ImageSource/AVAssetImageDataProvider.swift
+Pods/Kingfisher/Sources/General/ImageSource/ImageDataProvider.swift
+Pods/Kingfisher/Sources/General/ImageSource/Resource.swift
+Pods/Kingfisher/Sources/General/ImageSource/Source.swift
+Pods/Kingfisher/Sources/Image/Filter.swift
+Pods/Kingfisher/Sources/Image/GIFAnimatedImage.swift
+Pods/Kingfisher/Sources/Image/GraphicsContext.swift
+Pods/Kingfisher/Sources/Image/Image.swift
+Pods/Kingfisher/Sources/Image/ImageDrawing.swift
+Pods/Kingfisher/Sources/Image/ImageFormat.swift
+Pods/Kingfisher/Sources/Image/ImageProcessor.swift
+Pods/Kingfisher/Sources/Image/ImageProgressive.swift
+Pods/Kingfisher/Sources/Image/ImageTransition.swift
+Pods/Kingfisher/Sources/Image/Placeholder.swift
+Pods/Kingfisher/Sources/Networking/AuthenticationChallengeResponsable.swift
+Pods/Kingfisher/Sources/Networking/ImageDataProcessor.swift
+Pods/Kingfisher/Sources/Networking/ImageDownloader.swift
+Pods/Kingfisher/Sources/Networking/ImageDownloaderDelegate.swift
+Pods/Kingfisher/Sources/Networking/ImageModifier.swift
+Pods/Kingfisher/Sources/Networking/ImagePrefetcher.swift
+Pods/Kingfisher/Sources/Networking/RedirectHandler.swift
+Pods/Kingfisher/Sources/Networking/RequestModifier.swift
+Pods/Kingfisher/Sources/Networking/RetryStrategy.swift
+Pods/Kingfisher/Sources/Networking/SessionDataTask.swift
+Pods/Kingfisher/Sources/Networking/SessionDelegate.swift
+Pods/Kingfisher/Sources/SwiftUI/ImageBinder.swift
+Pods/Kingfisher/Sources/SwiftUI/KFImage.swift
+Pods/Kingfisher/Sources/SwiftUI/KFImageOptions.swift
+Pods/Kingfisher/Sources/Utility/Box.swift
+Pods/Kingfisher/Sources/Utility/CallbackQueue.swift
+Pods/Kingfisher/Sources/Utility/Delegate.swift
+Pods/Kingfisher/Sources/Utility/ExtensionHelpers.swift
+Pods/Kingfisher/Sources/Utility/Result.swift
+Pods/Kingfisher/Sources/Utility/Runtime.swift
+Pods/Kingfisher/Sources/Utility/SizeExtensions.swift
+Pods/Kingfisher/Sources/Utility/String+MD5.swift
+Pods/Kingfisher/Sources/Views/AnimatedImageView.swift
+Pods/Kingfisher/Sources/Views/Indicator.swift
+Pods/PKHUD/LICENSE
+Pods/PKHUD/README.md
+Pods/PKHUD/PKHUD/FrameView.swift
+Pods/PKHUD/PKHUD/HUD.swift
+Pods/PKHUD/PKHUD/PKHUD.h
+Pods/PKHUD/PKHUD/PKHUD.swift
+Pods/PKHUD/PKHUD/PKHUDAnimating.swift
+Pods/PKHUD/PKHUD/PKHUDAnimation.swift
+Pods/PKHUD/PKHUD/PKHUDAssets.swift
+Pods/PKHUD/PKHUD/PKHUDErrorView.swift
+Pods/PKHUD/PKHUD/PKHUDProgressView.swift
+Pods/PKHUD/PKHUD/PKHUDRotatingImageView.swift
+Pods/PKHUD/PKHUD/PKHUDSquareBaseView.swift
+Pods/PKHUD/PKHUD/PKHUDSuccessView.swift
+Pods/PKHUD/PKHUD/PKHUDSystemActivityIndicatorView.swift
+Pods/PKHUD/PKHUD/PKHUDTextView.swift
+Pods/PKHUD/PKHUD/PKHUDWideBaseView.swift
+Pods/PKHUD/PKHUD/Window.swift
+Pods/PKHUD/PKHUD/WindowRootViewController.swift
+Pods/PKHUD/PKHUD/Images.xcassets/Contents.json
+Pods/PKHUD/PKHUD/Images.xcassets/checkmark.imageset/checkmark.pdf
+Pods/PKHUD/PKHUD/Images.xcassets/checkmark.imageset/Contents.json
+Pods/PKHUD/PKHUD/Images.xcassets/cross.imageset/Contents.json
+Pods/PKHUD/PKHUD/Images.xcassets/cross.imageset/cross.pdf
+Pods/PKHUD/PKHUD/Images.xcassets/progress_activity.imageset/Contents.json
+Pods/PKHUD/PKHUD/Images.xcassets/progress_activity.imageset/progress.pdf
+Pods/PKHUD/PKHUD/Images.xcassets/progress_circular.imageset/Contents.json
+Pods/PKHUD/PKHUD/Images.xcassets/progress_circular.imageset/progress_circular.pdf
+Pods/Pods.xcodeproj/project.pbxproj
+Pods/Target Support Files/Kingfisher/Kingfisher-dummy.m
+Pods/Target Support Files/Kingfisher/Kingfisher-Info.plist
+Pods/Target Support Files/Kingfisher/Kingfisher-prefix.pch
+Pods/Target Support Files/Kingfisher/Kingfisher-umbrella.h
+Pods/Target Support Files/Kingfisher/Kingfisher.debug.xcconfig
+Pods/Target Support Files/Kingfisher/Kingfisher.modulemap
+Pods/Target Support Files/Kingfisher/Kingfisher.release.xcconfig
+Pods/Target Support Files/PKHUD/PKHUD-dummy.m
+Pods/Target Support Files/PKHUD/PKHUD-Info.plist
+Pods/Target Support Files/PKHUD/PKHUD-prefix.pch
+Pods/Target Support Files/PKHUD/PKHUD-umbrella.h
+Pods/Target Support Files/PKHUD/PKHUD.debug.xcconfig
+Pods/Target Support Files/PKHUD/PKHUD.modulemap
+Pods/Target Support Files/PKHUD/PKHUD.release.xcconfig
+Pods/Target Support Files/PKHUD/ResourceBundle-PKHUDResources-PKHUD-Info.plist
+Pods/Target Support Files/Pods-MarvelCharacters/Pods-MarvelCharacters-acknowledgements.markdown
+Pods/Target Support Files/Pods-MarvelCharacters/Pods-MarvelCharacters-acknowledgements.plist
+Pods/Target Support Files/Pods-MarvelCharacters/Pods-MarvelCharacters-dummy.m
+Pods/Target Support Files/Pods-MarvelCharacters/Pods-MarvelCharacters-frameworks-Debug-input-files.xcfilelist
+Pods/Target Support Files/Pods-MarvelCharacters/Pods-MarvelCharacters-frameworks-Debug-output-files.xcfilelist
+Pods/Target Support Files/Pods-MarvelCharacters/Pods-MarvelCharacters-frameworks-Release-input-files.xcfilelist
+Pods/Target Support Files/Pods-MarvelCharacters/Pods-MarvelCharacters-frameworks-Release-output-files.xcfilelist
+Pods/Target Support Files/Pods-MarvelCharacters/Pods-MarvelCharacters-frameworks.sh
+Pods/Target Support Files/Pods-MarvelCharacters/Pods-MarvelCharacters-Info.plist
+Pods/Target Support Files/Pods-MarvelCharacters/Pods-MarvelCharacters-umbrella.h
+Pods/Target Support Files/Pods-MarvelCharacters/Pods-MarvelCharacters.debug.xcconfig
+Pods/Target Support Files/Pods-MarvelCharacters/Pods-MarvelCharacters.modulemap
+Pods/Target Support Files/Pods-MarvelCharacters/Pods-MarvelCharacters.release.xcconfig
