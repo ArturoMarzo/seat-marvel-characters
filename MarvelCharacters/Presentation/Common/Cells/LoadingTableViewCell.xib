@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="LoadingTableViewCell" customModule="MarvelHeroes" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fsv-b3-Jcu">
+                        <rect key="frame" x="142" y="10" width="37" height="30"/>
+                        <state key="normal" title="Retry"/>
+                        <connections>
+                            <action selector="retryButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="5hb-yu-lvf"/>
+                        </connections>
+                    </button>
+                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="1c9-or-0tC">
+                        <rect key="frame" x="150" y="15" width="20" height="20"/>
+                    </activityIndicatorView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="1c9-or-0tC" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="MqJ-3C-u3v"/>
+                    <constraint firstItem="1c9-or-0tC" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="cGj-eZ-gd1"/>
+                    <constraint firstItem="Fsv-b3-Jcu" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="unv-8A-8wI"/>
+                    <constraint firstItem="Fsv-b3-Jcu" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="yTl-W0-F2D"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="retryButton" destination="Fsv-b3-Jcu" id="sBx-RW-H05"/>
+                <outlet property="spinner" destination="1c9-or-0tC" id="feW-4c-hqH"/>
+            </connections>
+            <point key="canvasLocation" x="141" y="154"/>
+        </tableViewCell>
+    </objects>
+</document>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="120" id="KGk-i7-Jjw" customClass="CharacterTableViewCell" customModule="MarvelHeroes" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZAL-Og-Do0">
+                        <rect key="frame" x="128" y="0.0" width="192" height="150"/>
+                    </imageView>
+                    <view alpha="0.45000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zVh-ON-Ys9">
+                        <rect key="frame" x="16" y="88.5" width="108" height="20"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A-Bomb (HAS)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZeZ-rn-ET6">
+                        <rect key="frame" x="16" y="88.5" width="108" height="20"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zr6-1f-AMU">
+                        <rect key="frame" x="16" y="116.5" width="288" height="33.5"/>
+                        <constraints>
+                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="37" id="Aod-t7-AFG"/>
+                        </constraints>
+                        <string key="text">Rick Jones has been Hulk's best bud since day one, but now he's more than a friend...he's a teammate! Transformed by a Gamma energy explosion, A-Bomb's thick, armored skin is just as strong and powerful as it is blue. And when he curls into action, he uses it like a giant bowling ball of destruction! </string>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view alpha="0.45000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bW6-oJ-bZk">
+                        <rect key="frame" x="16" y="116.5" width="288" height="35"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                <constraints>
+                    <constraint firstItem="zVh-ON-Ys9" firstAttribute="height" secondItem="ZeZ-rn-ET6" secondAttribute="height" id="0Sn-3L-Bgv"/>
+                    <constraint firstItem="bW6-oJ-bZk" firstAttribute="leading" secondItem="Zr6-1f-AMU" secondAttribute="leading" id="2bA-bH-qwk"/>
+                    <constraint firstItem="zVh-ON-Ys9" firstAttribute="leading" secondItem="ZeZ-rn-ET6" secondAttribute="leading" id="E95-j5-wBo"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ZeZ-rn-ET6" secondAttribute="trailing" constant="16" id="EIH-kj-Is1"/>
+                    <constraint firstItem="Zr6-1f-AMU" firstAttribute="top" secondItem="ZeZ-rn-ET6" secondAttribute="bottom" constant="8" id="FNj-0A-mrS"/>
+                    <constraint firstItem="ZAL-Og-Do0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="HZR-T1-4Ae"/>
+                    <constraint firstItem="ZeZ-rn-ET6" firstAttribute="leading" secondItem="Zr6-1f-AMU" secondAttribute="leading" id="JW7-5V-Uo9"/>
+                    <constraint firstItem="zVh-ON-Ys9" firstAttribute="top" secondItem="ZeZ-rn-ET6" secondAttribute="top" id="MJx-w2-IWC"/>
+                    <constraint firstAttribute="bottom" secondItem="Zr6-1f-AMU" secondAttribute="bottom" id="NXl-Bb-OoM"/>
+                    <constraint firstAttribute="trailing" secondItem="ZAL-Og-Do0" secondAttribute="trailing" id="Qg1-Gt-XYS"/>
+                    <constraint firstItem="bW6-oJ-bZk" firstAttribute="top" secondItem="Zr6-1f-AMU" secondAttribute="top" id="Rnp-ZO-gJa"/>
+                    <constraint firstItem="bW6-oJ-bZk" firstAttribute="height" secondItem="Zr6-1f-AMU" secondAttribute="height" multiplier="1.01493" constant="1" id="UNz-zZ-0dH"/>
+                    <constraint firstItem="bW6-oJ-bZk" firstAttribute="width" secondItem="Zr6-1f-AMU" secondAttribute="width" id="e1g-tA-GFt"/>
+                    <constraint firstItem="zVh-ON-Ys9" firstAttribute="width" secondItem="ZeZ-rn-ET6" secondAttribute="width" id="ubX-Se-Gc9"/>
+                    <constraint firstItem="ZAL-Og-Do0" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.6" id="vpG-mN-55X"/>
+                    <constraint firstAttribute="bottom" secondItem="ZAL-Og-Do0" secondAttribute="bottom" id="xv6-1f-uxj"/>
+                    <constraint firstAttribute="trailing" secondItem="Zr6-1f-AMU" secondAttribute="trailing" constant="16" id="yzk-79-J0j"/>
+                    <constraint firstItem="Zr6-1f-AMU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="z0v-SD-D6b"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="descriptionLabel" destination="Zr6-1f-AMU" id="BsK-KW-gvB"/>
+                <outlet property="nameLabel" destination="ZeZ-rn-ET6" id="tT7-M6-vjK"/>
+                <outlet property="thumbnailImageView" destination="ZAL-Og-Do0" id="nPn-Mj-idy"/>
+            </connections>
+            <point key="canvasLocation" x="140.57971014492756" y="178.79464285714286"/>
+        </tableViewCell>
+    </objects>
+</document>

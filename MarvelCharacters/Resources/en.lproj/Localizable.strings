@@ -1,0 +1,11 @@
+/* General*/
+"error_generic_error" = "There was an error";
+"retry_button" = "Retry";
+
+/* CharacterList*/
+"character_list_title" = "Marvel Characters";
+
+/* CharacterDetail */
+"character_detail_comics_header" = "Comics";
+"character_detail_series_header" = "Series";
+"character_detail_stories_header" = "Stories";
