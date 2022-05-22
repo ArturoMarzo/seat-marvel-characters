@@ -2,18 +2,29 @@ import UIKit
 
 protocol CharactersRepositoryContract {
     func characters(offset: Int, completion: @escaping (Result<CharactersModel, Error>) -> Void)
-    func characterDetailWith(id: UInt, completion: @escaping (Result<CharacterDetail, Error>) -> Void)
+    func characterDetailWith(characterId: UInt, completion: @escaping (Result<CharacterDetailModel, Error>) -> Void)
+    func storeAsFavoriteCharacterWith(characterId: UInt)
+    func removeAsFavoriteCharacterWith(characterId: UInt)
+    func characterIsFavorite(characterId: UInt) -> Bool
 }
 
-final class CharacterRepository: CharactersRepositoryContract {
-    static let pageSize = 20
+final class CharactersRepository: CharactersRepositoryContract {
+    let pageSize = 20
+    let favoritesCharactersSetKey = "favoritesCharactersSetKey"
+    let requestService: HTTPRequestService
+    let localStorageManager: LocalStorageManager
+    
+    init(requestService: HTTPRequestService, localStorageManager: LocalStorageManager) {
+        self.requestService = requestService
+        self.localStorageManager = localStorageManager
+    }
     
     func characters(offset: Int, completion: @escaping (Result<CharactersModel, Error>) -> Void) {
         var parameters = ServerHostURL.authenticationParameters()
-        parameters["limit"] = CharacterRepository.pageSize
+        parameters["limit"] = pageSize
         parameters["offset"] = offset
         
-        HTTPRequestService.request(url: ServerHostURL.charactersListURL(),
+        requestService.request(url: ServerHostURL.charactersListURL(),
                                    httpMethod: .get,
                                    parameters: parameters,
                                    headers: nil,
@@ -37,18 +48,18 @@ final class CharacterRepository: CharactersRepositoryContract {
         })
     }
     
-    func characterDetailWith(id: UInt, completion: @escaping (Result<CharacterDetail, Error>) -> Void) {
+    func characterDetailWith(characterId: UInt, completion: @escaping (Result<CharacterDetailModel, Error>) -> Void) {
         let parameters = ServerHostURL.authenticationParameters()
         
-        HTTPRequestService.request(url: ServerHostURL.characterDetailURL(id: id),
-                                   httpMethod: .get,
-                                   parameters: parameters,
-                                   headers: nil,
-                                   success: { (responseJSON, data) in
+        requestService.request(url: ServerHostURL.characterDetailURL(id: characterId),
+                               httpMethod: .get,
+                               parameters: parameters,
+                               headers: nil,
+                               success: { (responseJSON, data) in
             // Deserialize the data
             if let characterDetailResponseEntity = try? JSONDecoder().decode(CharacterDetailResponseEntity.self, from: data) {
                 guard let characterDetailEntity = characterDetailResponseEntity.data?.results?.first,
-                      let characterDetail = CharacterDetail(characterDetailEntity: characterDetailEntity) else {
+                      let characterDetail = CharacterDetailModel(characterDetailEntity: characterDetailEntity) else {
                     completion(.failure(HTTPRequestService.genericError))
                     return
                 }
@@ -62,5 +73,17 @@ final class CharacterRepository: CharactersRepositoryContract {
             // Return error in request
             completion(.failure(errorResponse))
         })
+    }
+    
+    func storeAsFavoriteCharacterWith(characterId: UInt) {
+        localStorageManager.storeId(id: characterId, collectionKey: favoritesCharactersSetKey)
+    }
+    
+    func removeAsFavoriteCharacterWith(characterId: UInt) {
+        localStorageManager.removeId(id: characterId, collectionKey: favoritesCharactersSetKey)
+    }
+    
+    func characterIsFavorite(characterId: UInt) -> Bool {
+        localStorageManager.idContainedInCollection(id: characterId, collectionKey: favoritesCharactersSetKey)
     }
 }

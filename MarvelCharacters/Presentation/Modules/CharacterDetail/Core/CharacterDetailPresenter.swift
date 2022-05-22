@@ -1,7 +1,7 @@
 import Foundation
 
 // MARK: - Main Class
-class CharacterDetailtPresenter: CharacterDetailPresenterContract {
+class CharacterDetailPresenter: CharacterDetailPresenterContract {
     private let interactorManager: CharacterDetailInteractorManagerContract
     private let router: CharacterDetailRouterContract
     private let viewModelBuilder: CharacterDetailViewModelBuilderContract
@@ -32,10 +32,20 @@ class CharacterDetailtPresenter: CharacterDetailPresenterContract {
         retrieveCharacterData()
     }
     
+    func favoriteButtonPressed() {
+        if interactorManager.characterIsFavorite() {
+            interactorManager.removeAsFavoriteCharacter()
+            view?.setFavorite(value: false)
+        } else {
+            interactorManager.storeAsFavoriteCharacter()
+            view?.setFavorite(value: true)
+        }
+    }
+    
     // MARK: - Private
     func retrieveCharacterData() {
         interactorManager.characterDetailWith { [weak self] result in
-            // If presenter has ben freed before retrieving the data it is not necessary to continue interacting with the view
+            // If presenter has been freed before retrieving the data it is not necessary to continue interacting with the view
             guard let self = self else {
                 return
             }
@@ -43,10 +53,12 @@ class CharacterDetailtPresenter: CharacterDetailPresenterContract {
             switch result {
             case let .success(characterDetail):
                 // Use a class to build the data that is going to be shown in the view
+                let favorite = self.interactorManager.characterIsFavorite()
                 let viewModel = self.viewModelBuilder.buildViewModel(characterDetail: characterDetail)
                 self.viewModel = viewModel
                 self.view?.hideHUD()
-                self.view?.displayCharacterDetail(withViewModel: viewModel)
+                self.view?.displayCharacterDetailWith(viewModel: viewModel)
+                self.view?.setFavorite(value: favorite)
             case let .failure(error):
                 if error.code != HTTPRequestService.genericErrorCode {
                     self.view?.displayErrorWith(message: error.localizedDescription)

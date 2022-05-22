@@ -52,10 +52,10 @@ class CharacterDetailBuilder: BaseBuilder, CharacterDetailBuilderContract {
                   return
               }
         
-        presenter = CharacterDetailtPresenter(interactorManager: interactorManager,
-                                              router: router,
-                                              view: view,
-                                              viewModelBuilder: viewModelBuilder)
+        presenter = CharacterDetailPresenter(interactorManager: interactorManager,
+                                             router: router,
+                                             view: view,
+                                             viewModelBuilder: viewModelBuilder)
     }
     
     private func buildCircularDependencies() {

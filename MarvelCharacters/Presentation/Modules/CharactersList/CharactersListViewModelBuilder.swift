@@ -6,7 +6,7 @@ enum CharactersListViewModelMode {
     case error
 }
 
-// Using struct instead of a class to store the products information prevents mutability
+// Using struct instead of a class to store the characters list information prevents mutability
 struct CharactersListViewModel {
     var characters: [CharacterViewModel]
     var charactersListViewModelMode: CharactersListViewModelMode

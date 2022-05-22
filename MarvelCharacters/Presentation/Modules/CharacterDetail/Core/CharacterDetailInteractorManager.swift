@@ -9,7 +9,19 @@ class CharacterDetailInteractorManager: CharacterDetailInteractorManagerContract
         self.characterRepository = characterRepository
     }
     
-    func characterDetailWith(withCompletion completion: @escaping (Result<CharacterDetail, Error>) -> Void) {
-        characterRepository.characterDetailWith(id: characterId, completion: completion)
+    func characterDetailWith(completion: @escaping (Result<CharacterDetailModel, Error>) -> Void) {
+        characterRepository.characterDetailWith(characterId: characterId, completion: completion)
+    }
+    
+    func storeAsFavoriteCharacter() {
+        characterRepository.storeAsFavoriteCharacterWith(characterId: characterId)
+    }
+    
+    func removeAsFavoriteCharacter() {
+        characterRepository.removeAsFavoriteCharacterWith(characterId: characterId)
+    }
+    
+    func characterIsFavorite() -> Bool {
+        characterRepository.characterIsFavorite(characterId: characterId)
     }
 }

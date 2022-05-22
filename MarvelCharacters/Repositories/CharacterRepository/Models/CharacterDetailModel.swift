@@ -1,8 +1,8 @@
-struct CharacterDetail {
+struct CharacterDetailModel {
     let id: UInt
     let name: String
     let description: String?
-    let thumbnail: String?
+    let imageURL: String?
     let comics: [CharacterDetailComic]?
     let availableComics: Int
     let series: [CharacterDetailSerie]?
@@ -21,9 +21,9 @@ struct CharacterDetail {
         description = characterDetailEntity.description
         if let path = characterDetailEntity.thumbnail?.path,
             let extensionFile = characterDetailEntity.thumbnail?.extensionFile {
-            thumbnail = "\(path).\(extensionFile)".replacingOccurrences(of: "http", with: "https")
+            imageURL = "\(path).\(extensionFile)".replacingOccurrences(of: "http", with: "https")
         } else {
-            thumbnail = nil
+            imageURL = nil
         }
         
         if let comics = characterDetailEntity.comics?.items {

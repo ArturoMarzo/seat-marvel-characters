@@ -11,24 +11,29 @@ protocol CharacterDetailBuilderContract {
 }
 
 protocol CharacterDetailInteractorManagerContract {
-    func characterDetailWith(withCompletion completion: @escaping (Result<CharacterDetail, Error>) -> Void)
+    func characterDetailWith(completion: @escaping (Result<CharacterDetailModel, Error>) -> Void)
+    func storeAsFavoriteCharacter()
+    func removeAsFavoriteCharacter()    
+    func characterIsFavorite() -> Bool
 }
 
 protocol CharacterDetailPresenterContract {
     func viewDidLoad()
     func retryButtonPressed()
+    func favoriteButtonPressed()
 }
 
 protocol CharacterDetailViewContract: AnyObject {
     func showHUD()
     func hideHUD()
     func hideErrorMessage()
-    func displayCharacterDetail(withViewModel viewModel: CharacterDetailViewModel)
+    func displayCharacterDetailWith(viewModel: CharacterDetailViewModel)
     func displayErrorWith(message: String)
+    func setFavorite(value: Bool)
 }
 
 protocol CharacterDetailRouterContract {}
 
 protocol CharacterDetailViewModelBuilderContract {
-    func buildViewModel(characterDetail: CharacterDetail) -> CharacterDetailViewModel
+    func buildViewModel(characterDetail: CharacterDetailModel) -> CharacterDetailViewModel
 }

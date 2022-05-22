@@ -5,8 +5,9 @@ class CharacterDetailViewController: UIViewController {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var errorView: UIView!
     @IBOutlet weak var messageLabel: UILabel!
+    @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var retryButton: UIButton!
-    @IBOutlet weak var thumbnailImageView: UIImageView!
+    @IBOutlet weak var characterImageView: UIImageView!
     @IBOutlet weak var descriptionTextView: UITextView!
     
     var presenter: CharacterDetailPresenterContract?
@@ -31,6 +32,10 @@ class CharacterDetailViewController: UIViewController {
     @IBAction func retryButtonPressed(_ sender: Any) {
         presenter?.retryButtonPressed()
     }
+    
+    @IBAction func favoriteButtonPressed(_ sender: Any) {
+        presenter?.favoriteButtonPressed()
+    }
 }
 
 // MARK: - CharacterDetailView
@@ -47,14 +52,14 @@ extension CharacterDetailViewController: CharacterDetailViewContract {
         errorView.isHidden = false
     }
     
-    func displayCharacterDetail(withViewModel viewModel: CharacterDetailViewModel) {
+    func displayCharacterDetailWith(viewModel: CharacterDetailViewModel) {
         HUD.hide()
         containerView.isHidden = false
         errorView.isHidden = true
         self.viewModel = viewModel
         self.title = viewModel.name
-        if let thumbnail = viewModel.thumbnail {
-            thumbnailImageView.kf.setImage(with: URL(string: thumbnail))
+        if let thumbnail = viewModel.imageURL {
+            characterImageView.kf.setImage(with: URL(string: thumbnail))
         }
         
         let boldFont = UIFont.boldSystemFont(ofSize: 17)
@@ -69,7 +74,9 @@ extension CharacterDetailViewController: CharacterDetailViewContract {
         }
         
         if let comics = viewModel.comics, !comics.isEmpty {
-            let comicsList = NSMutableAttributedString(string: "\n\n\(NSLocalizedString("character_detail_comics_header", comment: ""))", attributes: boldAttributes)
+            let comicsList =
+            NSMutableAttributedString(string: "\n\n\(NSLocalizedString("character_detail_comics_header", comment: ""))",
+                                      attributes: boldAttributes)
             for comic in comics {
                 comicsList.append(NSAttributedString(string: "\n- \(comic.name)", attributes: regularAttributes))
             }
@@ -80,7 +87,9 @@ extension CharacterDetailViewController: CharacterDetailViewContract {
         }
         
         if let series = viewModel.series, !series.isEmpty {
-            let seriesList = NSMutableAttributedString(string: "\n\n\(NSLocalizedString("character_detail_series_header", comment: ""))", attributes: boldAttributes)
+            let seriesList =
+            NSMutableAttributedString(string: "\n\n\(NSLocalizedString("character_detail_series_header", comment: ""))",
+                                      attributes: boldAttributes)
             for serie in series {
                 seriesList.append(NSAttributedString(string: "\n- \(serie.name)", attributes: regularAttributes))
             }
@@ -91,7 +100,9 @@ extension CharacterDetailViewController: CharacterDetailViewContract {
         }
         
         if let stories = viewModel.comics, !stories.isEmpty {
-            let storiesList = NSMutableAttributedString(string: "\n\n\(NSLocalizedString("character_detail_stories_header", comment: ""))", attributes: boldAttributes)
+            let storiesList =
+            NSMutableAttributedString(string: "\n\n\(NSLocalizedString("character_detail_stories_header", comment: ""))",
+                                      attributes: boldAttributes)
             for story in stories {
                 storiesList.append(NSAttributedString(string: "\n- \(story.name)", attributes: regularAttributes))
             }
@@ -102,6 +113,12 @@ extension CharacterDetailViewController: CharacterDetailViewContract {
         }
         
         descriptionTextView.attributedText = attributedDescription
+    }
+    
+    func setFavorite(value: Bool) {
+        let favoriteButtonImage = value ? UIImage(named: "fullHeart") : UIImage(named: "emptyHeart")
+        favoriteButton.setImage(favoriteButtonImage, for: .normal)
+        favoriteButton.setTitle("", for: .normal)
     }
     
     func displayErrorWith(message: String) {

@@ -1,8 +1,16 @@
 import UIKit
 
+protocol HTTPRequestServiceContract {
+    func request(url urlString: String,
+                 httpMethod: HTTPMethod,
+                 parameters: [String: Any]?,
+                 headers: Dictionary<String, String>?,
+                 success: @escaping (_ responseJSON: String, _ data: Data) -> Void,
+                 error: @escaping (_ error: Error) -> Void)
+}
+
 // With this enumeration it can be built all kind of requests for remote services
 enum HTTPMethod: String {
-    
     case get = "GET"
     case head = "HEAD"
     case post = "POST"
@@ -18,7 +26,7 @@ enum HTTPMethod: String {
  This class can easily be expanded to handle all kind of requests from remote services.
  The UsersServices protocol has been developed here and not in a extension because in tests the methods couldn't be overriden
  */
-class HTTPRequestService {
+class HTTPRequestService: HTTPRequestServiceContract {
     // generic error code for unexpected failures retrieving information
     static let genericErrorCode = 999
     // generic error to return if something unexpected happened
@@ -29,12 +37,12 @@ class HTTPRequestService {
     }
     
     // With this generic method can be built any request needed for remote services
-    static func request(url urlString: String,
-                        httpMethod: HTTPMethod,
-                        parameters: [String: Any]?,
-                        headers: Dictionary<String, String>?,
-                        success: @escaping (_ responseJSON: String, _ data: Data) -> Void,
-                        error: @escaping (_ error: Error) -> Void) {
+    func request(url urlString: String,
+                 httpMethod: HTTPMethod,
+                 parameters: [String: Any]?,
+                 headers: Dictionary<String, String>?,
+                 success: @escaping (_ responseJSON: String, _ data: Data) -> Void,
+                 error: @escaping (_ error: Error) -> Void) {
         var urlWithComponents = URL(string: urlString)
         
         if httpMethod == .get, let parameters = parameters, !parameters.isEmpty {
