@@ -1,11 +1,7 @@
 import Foundation
-
-protocol LocalStorageManagerContract {
-    func storeId(id: UInt, collectionKey: String)
-    func removeId(id: UInt, collectionKey: String)
-    func idContainedInCollection(id: UInt, collectionKey: String) -> Bool
-}
-
+/*
+ This class implements LocalStorageManagerContract to be used by repositories
+ */
 class LocalStorageManager: LocalStorageManagerContract {
     let userDefaults = UserDefaults.standard
     

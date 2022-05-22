@@ -60,9 +60,10 @@ class CharacterDetailPresenter: CharacterDetailPresenterContract {
                 self.view?.displayCharacterDetailWith(viewModel: viewModel)
                 self.view?.setFavorite(value: favorite)
             case let .failure(error):
-                if error.code != HTTPRequestService.genericErrorCode {
-                    self.view?.displayErrorWith(message: error.localizedDescription)
-                } else {
+                switch error {
+                case NetworkError.parsing:
+                    self.view?.displayErrorWith(message: NSLocalizedString("parsing_error", comment: ""))
+                case NetworkError.genericError:
                     self.view?.displayErrorWith(message: NSLocalizedString("error_generic_error", comment: ""))
                 }
             }

@@ -1,8 +1,8 @@
 import UIKit
 
 protocol CharactersRepositoryContract {
-    func characters(offset: Int, completion: @escaping (Result<CharactersModel, Error>) -> Void)
-    func characterDetailWith(characterId: UInt, completion: @escaping (Result<CharacterDetailModel, Error>) -> Void)
+    func characters(offset: Int, completion: @escaping (Result<CharactersModel, NetworkError>) -> Void)
+    func characterDetailWith(characterId: UInt, completion: @escaping (Result<CharacterDetailModel, NetworkError>) -> Void)
     func storeAsFavoriteCharacterWith(characterId: UInt)
     func removeAsFavoriteCharacterWith(characterId: UInt)
     func characterIsFavorite(characterId: UInt) -> Bool
@@ -11,28 +11,28 @@ protocol CharactersRepositoryContract {
 final class CharactersRepository: CharactersRepositoryContract {
     let pageSize = 20
     let favoritesCharactersSetKey = "favoritesCharactersSetKey"
-    let requestService: HTTPRequestService
-    let localStorageManager: LocalStorageManager
+    let requestService: HTTPRequestManagerContract
+    let localStorageManager: LocalStorageManagerContract
     
-    init(requestService: HTTPRequestService, localStorageManager: LocalStorageManager) {
+    init(requestService: HTTPRequestManagerContract, localStorageManager: LocalStorageManagerContract) {
         self.requestService = requestService
         self.localStorageManager = localStorageManager
     }
     
-    func characters(offset: Int, completion: @escaping (Result<CharactersModel, Error>) -> Void) {
+    func characters(offset: Int, completion: @escaping (Result<CharactersModel, NetworkError>) -> Void) {
         var parameters = ServerHostURL.authenticationParameters()
         parameters["limit"] = pageSize
         parameters["offset"] = offset
         
         requestService.request(url: ServerHostURL.charactersListURL(),
-                                   httpMethod: .get,
-                                   parameters: parameters,
-                                   headers: nil,
-                                   success: { (responseJSON, data) in
+                               httpMethod: .get,
+                               parameters: parameters,
+                               headers: nil,
+                               success: { responseJSON, data in
             // Deserialize the data
             if let characterResponseEntity = try? JSONDecoder().decode(CharactersListResponseEntity.self, from: data) {
                 guard let results = characterResponseEntity.data?.results else {
-                    completion(.failure(HTTPRequestService.genericError))
+                    completion(.failure(NetworkError.parsing))
                     return
                 }
                 
@@ -40,38 +40,38 @@ final class CharactersRepository: CharactersRepositoryContract {
                 completion(.success(characters))
             } else {
                 // Data retrieved can't be processed
-                completion(.failure(HTTPRequestService.genericError))
+                completion(.failure(NetworkError.parsing))
             }
-        }, error: { (errorResponse) in
+        }, error: { errorResponse in
             // Return error in request
-            completion(.failure(errorResponse))
+            completion(.failure(NetworkError.genericError))
         })
     }
     
-    func characterDetailWith(characterId: UInt, completion: @escaping (Result<CharacterDetailModel, Error>) -> Void) {
+    func characterDetailWith(characterId: UInt, completion: @escaping (Result<CharacterDetailModel, NetworkError>) -> Void) {
         let parameters = ServerHostURL.authenticationParameters()
         
         requestService.request(url: ServerHostURL.characterDetailURL(id: characterId),
                                httpMethod: .get,
                                parameters: parameters,
                                headers: nil,
-                               success: { (responseJSON, data) in
+                               success: { responseJSON, data in
             // Deserialize the data
             if let characterDetailResponseEntity = try? JSONDecoder().decode(CharacterDetailResponseEntity.self, from: data) {
                 guard let characterDetailEntity = characterDetailResponseEntity.data?.results?.first,
                       let characterDetail = CharacterDetailModel(characterDetailEntity: characterDetailEntity) else {
-                    completion(.failure(HTTPRequestService.genericError))
-                    return
-                }
+                          completion(.failure(NetworkError.parsing))
+                          return
+                      }
                 
                 completion(.success(characterDetail))
             } else {
                 // Data retrieved can't be processed
-                completion(.failure(HTTPRequestService.genericError))
+                completion(.failure(NetworkError.parsing))
             }
-        }, error: { (errorResponse) in
+        }, error: { errorResponse in
             // Return error in request
-            completion(.failure(errorResponse))
+            completion(.failure(NetworkError.genericError))
         })
     }
     

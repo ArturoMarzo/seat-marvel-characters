@@ -9,7 +9,7 @@ class CharacterDetailInteractorManager: CharacterDetailInteractorManagerContract
         self.characterRepository = characterRepository
     }
     
-    func characterDetailWith(completion: @escaping (Result<CharacterDetailModel, Error>) -> Void) {
+    func characterDetailWith(completion: @escaping (Result<CharacterDetailModel, NetworkError>) -> Void) {
         characterRepository.characterDetailWith(characterId: characterId, completion: completion)
     }
     

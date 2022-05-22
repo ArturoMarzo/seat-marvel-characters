@@ -11,7 +11,7 @@ protocol CharacterDetailBuilderContract {
 }
 
 protocol CharacterDetailInteractorManagerContract {
-    func characterDetailWith(completion: @escaping (Result<CharacterDetailModel, Error>) -> Void)
+    func characterDetailWith(completion: @escaping (Result<CharacterDetailModel, NetworkError>) -> Void)
     func storeAsFavoriteCharacter()
     func removeAsFavoriteCharacter()    
     func characterIsFavorite() -> Bool

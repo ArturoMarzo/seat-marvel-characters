@@ -1,5 +1,6 @@
 /* General*/
 "error_generic_error" = "Se ha producido un error";
+"parsing_error" = "Se ha producido un error en la respuesta";
 "retry_button" = "Reintentar";
 
 /* CharacterList*/

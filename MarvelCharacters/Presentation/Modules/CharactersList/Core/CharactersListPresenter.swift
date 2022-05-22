@@ -76,17 +76,17 @@ private extension CharactersListPresenter {
         view?.displayCharacters(withViewModel: viewModel)
     }
     
-    func manageFailureResponse(error: Error) {
+    func manageFailureResponse(error: NetworkError) {
         if let viewModel = viewModel {
             // There is data previously retrieved. If request failed show retry option in cell
             let newViewModel = viewModelBuilder.buildViewModel(characters: viewModel.characters,
                                                                     charactersListViewModelMode: .error)
             view?.displayCharacters(withViewModel: newViewModel)
         } else {
-            // No data previously requested. Show error view
-            if error.code != HTTPRequestService.genericErrorCode {
-                view?.displayErrorWith(message: error.localizedDescription)
-            } else {
+            switch error {
+            case NetworkError.parsing:
+                view?.displayErrorWith(message: NSLocalizedString("parsing_error", comment: ""))
+            case NetworkError.genericError:
                 view?.displayErrorWith(message: NSLocalizedString("error_generic_error", comment: ""))
             }
         }

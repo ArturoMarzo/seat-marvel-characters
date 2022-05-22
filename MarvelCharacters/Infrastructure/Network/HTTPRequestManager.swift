@@ -1,13 +1,4 @@
-import UIKit
-
-protocol HTTPRequestServiceContract {
-    func request(url urlString: String,
-                 httpMethod: HTTPMethod,
-                 parameters: [String: Any]?,
-                 headers: Dictionary<String, String>?,
-                 success: @escaping (_ responseJSON: String, _ data: Data) -> Void,
-                 error: @escaping (_ error: Error) -> Void)
-}
+import Foundation
 
 // With this enumeration it can be built all kind of requests for remote services
 enum HTTPMethod: String {
@@ -23,19 +14,9 @@ enum HTTPMethod: String {
 }
 
 /*
- This class can easily be expanded to handle all kind of requests from remote services.
- The UsersServices protocol has been developed here and not in a extension because in tests the methods couldn't be overriden
+ This class implements HTTPRequestManagerContract to be used by repositories
  */
-class HTTPRequestService: HTTPRequestServiceContract {
-    // generic error code for unexpected failures retrieving information
-    static let genericErrorCode = 999
-    // generic error to return if something unexpected happened
-    static let genericError = NSError(domain: NSURLErrorDomain, code: HTTPRequestService.genericErrorCode, userInfo: nil)
-    
-    static func getImageDataFrom(url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
-        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
-    }
-    
+class HTTPRequestManager: HTTPRequestManagerContract {
     // With this generic method can be built any request needed for remote services
     func request(url urlString: String,
                  httpMethod: HTTPMethod,
@@ -47,7 +28,7 @@ class HTTPRequestService: HTTPRequestServiceContract {
         
         if httpMethod == .get, let parameters = parameters, !parameters.isEmpty {
             guard var urlComponents = URLComponents(string: urlString) else {
-                error(HTTPRequestService.genericError)
+                error(NSError().genericError)
                 return
             }
             
@@ -62,7 +43,7 @@ class HTTPRequestService: HTTPRequestServiceContract {
         
         // Incorrect url
         guard let url = urlWithComponents else {
-            error(HTTPRequestService.genericError)
+            error(NSError().genericError)
             return
         }
         
@@ -86,7 +67,7 @@ class HTTPRequestService: HTTPRequestServiceContract {
                 // A failure has happened during the request
                 // Return the data in main thread to prevent failures modifying the interface
                 DispatchQueue.main.async {
-                    error(errorResponse ?? HTTPRequestService.genericError)
+                    error(errorResponse ?? NSError().genericError)
                 }
                 return
             }
@@ -103,7 +84,7 @@ class HTTPRequestService: HTTPRequestServiceContract {
                 // Incorrect data
                 // Return the data in main thread to prevent failures modifying the interface
                 DispatchQueue.main.async {
-                    error(HTTPRequestService.genericError)
+                    error(NSError().genericError)
                 }
             }
         }
