@@ -118,7 +118,6 @@ extension CharacterDetailViewController: CharacterDetailViewContract {
     func setFavorite(value: Bool) {
         let favoriteButtonImage = value ? UIImage(named: "fullHeart") : UIImage(named: "emptyHeart")
         favoriteButton.setImage(favoriteButtonImage, for: .normal)
-        favoriteButton.setTitle("", for: .normal)
     }
     
     func displayErrorWith(message: String) {
