@@ -2,8 +2,8 @@ import XCTest
 @testable import MarvelCharacters
 
 // Bundle of tests for CharactersListPresenter functionality
-class CharactersListPresenterTests: XCTestCase {    
-    var presenter: CharactersListPresenter!
+class CharactersListPresenterTests: XCTestCase {
+    var presenter: CharactersListPresenterContract!
     var viewMock: CharactersListViewMock!
     var routerMock: CharactersListRouterMock!
     var viewModelBuilderMock: CharactersListViewModelBuilderMock!

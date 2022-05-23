@@ -12,7 +12,7 @@ class CharactersListInteractorManagerMock: CharactersListInteractorManagerContra
     var returnError = false
     var errorToReturn = NetworkError.genericError
     
-    func characters(offset: Int, completion: @escaping (Result<CharactersModel, NetworkError>) -> Void) {
+    func getCharacters(offset: Int, completion: @escaping (Result<CharactersModel, NetworkError>) -> Void) {
         self.charactersRequested = true
         self.offset = offset
         if returnError {

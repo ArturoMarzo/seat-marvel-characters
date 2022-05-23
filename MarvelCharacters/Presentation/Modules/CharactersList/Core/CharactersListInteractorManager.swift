@@ -7,7 +7,7 @@ class CharactersListInteractorManager: CharactersListInteractorManagerContract {
         self.characterRepository = characterRepository
     }
     
-    func characters(offset: Int, completion: @escaping (Result<CharactersModel, NetworkError>) -> Void) {
-        characterRepository.characters(offset: offset, completion: completion)
+    func getCharacters(offset: Int, completion: @escaping (Result<CharactersModel, NetworkError>) -> Void) {
+        characterRepository.getCharacters(offset: offset, completion: completion)
     }
 }

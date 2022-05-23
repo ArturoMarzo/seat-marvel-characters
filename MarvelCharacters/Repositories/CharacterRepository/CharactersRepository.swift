@@ -1,8 +1,8 @@
 import UIKit
 
 protocol CharactersRepositoryContract {
-    func characters(offset: Int, completion: @escaping (Result<CharactersModel, NetworkError>) -> Void)
-    func characterDetailWith(characterId: UInt, completion: @escaping (Result<CharacterDetailModel, NetworkError>) -> Void)
+    func getCharacters(offset: Int, completion: @escaping (Result<CharactersModel, NetworkError>) -> Void)
+    func getCharacterDetailWith(characterId: UInt, completion: @escaping (Result<CharacterDetailModel, NetworkError>) -> Void)
     func storeAsFavoriteCharacterWith(characterId: UInt)
     func removeAsFavoriteCharacterWith(characterId: UInt)
     func characterIsFavorite(characterId: UInt) -> Bool
@@ -11,24 +11,24 @@ protocol CharactersRepositoryContract {
 final class CharactersRepository: CharactersRepositoryContract {
     let pageSize = 20
     let favoritesCharactersSetKey = "favoritesCharactersSetKey"
-    let requestService: HTTPRequestManagerContract
+    let requestManager: HTTPRequestManagerContract
     let localStorageManager: LocalStorageManagerContract
     
-    init(requestService: HTTPRequestManagerContract, localStorageManager: LocalStorageManagerContract) {
-        self.requestService = requestService
+    init(requestManager: HTTPRequestManagerContract, localStorageManager: LocalStorageManagerContract) {
+        self.requestManager = requestManager
         self.localStorageManager = localStorageManager
     }
     
-    func characters(offset: Int, completion: @escaping (Result<CharactersModel, NetworkError>) -> Void) {
+    func getCharacters(offset: Int, completion: @escaping (Result<CharactersModel, NetworkError>) -> Void) {
         var parameters = ServerHostURL.authenticationParameters()
         parameters["limit"] = pageSize
         parameters["offset"] = offset
         
-        requestService.request(url: ServerHostURL.charactersListURL(),
+        requestManager.request(url: ServerHostURL.charactersListURL(),
                                httpMethod: .get,
                                parameters: parameters,
                                headers: nil,
-                               success: { responseJSON, data in
+                               success: { _, data in
             // Deserialize the data
             if let characterResponseEntity = try? JSONDecoder().decode(CharactersListResponseEntity.self, from: data) {
                 guard let results = characterResponseEntity.data?.results else {
@@ -48,14 +48,14 @@ final class CharactersRepository: CharactersRepositoryContract {
         })
     }
     
-    func characterDetailWith(characterId: UInt, completion: @escaping (Result<CharacterDetailModel, NetworkError>) -> Void) {
+    func getCharacterDetailWith(characterId: UInt, completion: @escaping (Result<CharacterDetailModel, NetworkError>) -> Void) {
         let parameters = ServerHostURL.authenticationParameters()
         
-        requestService.request(url: ServerHostURL.characterDetailURL(id: characterId),
+        requestManager.request(url: ServerHostURL.characterDetailURL(id: characterId),
                                httpMethod: .get,
                                parameters: parameters,
                                headers: nil,
-                               success: { responseJSON, data in
+                               success: { _, data in
             // Deserialize the data
             if let characterDetailResponseEntity = try? JSONDecoder().decode(CharacterDetailResponseEntity.self, from: data) {
                 guard let characterDetailEntity = characterDetailResponseEntity.data?.results?.first,

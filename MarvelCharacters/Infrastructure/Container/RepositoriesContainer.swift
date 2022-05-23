@@ -4,9 +4,9 @@ class RepositoriesContainer {
     static let shared = RepositoriesContainer()
 
     lazy var characterRepository: CharactersRepositoryContract = {
-        let requestService = HTTPRequestManager()
+        let requestManager = HTTPRequestManager()
         let localStoreManager = LocalStorageManager()
         
-        return CharactersRepository(requestService: requestService, localStorageManager: localStoreManager)
+        return CharactersRepository(requestManager: requestManager, localStorageManager: localStoreManager)
     }()
 }

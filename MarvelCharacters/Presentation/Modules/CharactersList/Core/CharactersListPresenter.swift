@@ -51,7 +51,7 @@ class CharactersListPresenter: CharactersListPresenterContract {
 // MARK: - Private
 private extension CharactersListPresenter {
     func retrieveCharacters(offset: Int) {
-        interactorManager.characters(offset: offset) { [weak self] result in
+        interactorManager.getCharacters(offset: offset) { [weak self] result in
             switch result {
             case let .success(characters):
                 self?.manageSuccesfulResponse(characters: characters)

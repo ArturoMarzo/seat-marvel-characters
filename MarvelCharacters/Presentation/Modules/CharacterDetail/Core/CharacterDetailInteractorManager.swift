@@ -10,7 +10,7 @@ class CharacterDetailInteractorManager: CharacterDetailInteractorManagerContract
     }
     
     func characterDetailWith(completion: @escaping (Result<CharacterDetailModel, NetworkError>) -> Void) {
-        characterRepository.characterDetailWith(characterId: characterId, completion: completion)
+        characterRepository.getCharacterDetailWith(characterId: characterId, completion: completion)
     }
     
     func storeAsFavoriteCharacter() {

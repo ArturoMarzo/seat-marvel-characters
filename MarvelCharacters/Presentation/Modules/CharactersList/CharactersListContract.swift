@@ -11,7 +11,7 @@ protocol CharactersListBuilderContract {
 }
 
 protocol CharactersListInteractorManagerContract {
-    func characters(offset: Int, completion: @escaping (Result<CharactersModel, NetworkError>) -> Void)
+    func getCharacters(offset: Int, completion: @escaping (Result<CharactersModel, NetworkError>) -> Void)
 }
 
 protocol CharactersListPresenterContract: LoadingTableViewCellDelegate {
