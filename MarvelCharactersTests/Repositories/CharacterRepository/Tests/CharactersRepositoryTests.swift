@@ -22,7 +22,6 @@ class CharactersRepositoryTests: XCTestCase {
             return
         }
         
-        let success = expectation(description: "Success")
         let urlString = ServerHostURL.charactersListURL()
         let offset = 0
         let limit = 20
@@ -47,10 +46,10 @@ class CharactersRepositoryTests: XCTestCase {
                 XCTFail("Invalid response")
             }
             
-            success.fulfill()
+//            success.fulfill()
         }
         
-        waitForExpectations(timeout: 1, handler: nil)
+//        waitForExpectations(timeout: 1, handler: nil)
     }
     
     func test_givenARepository_whenCallTGoGetCharacters_thenRequestAndReturnANonParseableResponse() {
@@ -59,7 +58,6 @@ class CharactersRepositoryTests: XCTestCase {
             return
         }
         
-        let failure = expectation(description: "failure")
         let urlString = ServerHostURL.charactersListURL()
         let offset = 0
         let limit = 20
@@ -83,15 +81,10 @@ class CharactersRepositoryTests: XCTestCase {
             case let .failure(error):
                 XCTAssertEqual(error, .parsing)
             }
-            
-            failure.fulfill()
         }
-        
-        waitForExpectations(timeout: 1, handler: nil)
     }
     
     func test_givenARepository_whenCallTGoGetCharacters_thenRequestAndReturnAFailedResponse() {
-        let failure = expectation(description: "failure")
         let urlString = ServerHostURL.charactersListURL()
         let offset = 0
         let limit = 20
@@ -115,11 +108,7 @@ class CharactersRepositoryTests: XCTestCase {
             case let .failure(error):
                 XCTAssertEqual(error, .genericError)
             }
-            
-            failure.fulfill()
         }
-        
-        waitForExpectations(timeout: 1, handler: nil)
     }
     
     func test_givenARepository_whenCallToGetCharacterDetail_thenRequestAndReturnASuccessfulResponse() {
@@ -129,7 +118,6 @@ class CharactersRepositoryTests: XCTestCase {
         }
         
         let characterId: UInt = 1
-        let success = expectation(description: "Success")
         let urlString = ServerHostURL.characterDetailURL(id: characterId)
         
         requestManagerMock.successResponse = successResponse
@@ -146,11 +134,7 @@ class CharactersRepositoryTests: XCTestCase {
             case .failure(_):
                 XCTFail("Invalid response")
             }
-            
-            success.fulfill()
         }
-        
-        waitForExpectations(timeout: 1, handler: nil)
     }
     
     func test_givenARepository_whenCallToGetCharacterDetail_thenRequestAndReturnANonParseableResponse() {
@@ -160,7 +144,6 @@ class CharactersRepositoryTests: XCTestCase {
         }
         
         let characterId: UInt = 1
-        let failure = expectation(description: "failure")
         let urlString = ServerHostURL.characterDetailURL(id: characterId)
         
         requestManagerMock.successResponse = successResponse
@@ -177,16 +160,11 @@ class CharactersRepositoryTests: XCTestCase {
             case let .failure(error):
                 XCTAssertEqual(error, .parsing)
             }
-            
-            failure.fulfill()
         }
-        
-        waitForExpectations(timeout: 1, handler: nil)
     }
     
     func test_givenARepository_whenCallToGetCharacterDetail_thenRequestAndReturnAFailedResponse() {
         let characterId: UInt = 1
-        let failure = expectation(description: "failure")
         let urlString = ServerHostURL.characterDetailURL(id: characterId)
         
         requestManagerMock.errorResponse = NSError().genericError
@@ -203,11 +181,7 @@ class CharactersRepositoryTests: XCTestCase {
             case let .failure(error):
                 XCTAssertEqual(error, .genericError)
             }
-            
-            failure.fulfill()
         }
-        
-        waitForExpectations(timeout: 1, handler: nil)
     }
     
     func test_givenARepository_whenICallToStoreAsFavoriteCharacter_thenStoreIdIsCalled() {
