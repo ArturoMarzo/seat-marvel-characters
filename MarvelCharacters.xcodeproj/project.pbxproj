@@ -390,11 +390,11 @@
 		697A2DC22409A94400EADDBA /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
-				695AA279283A4CDE008A7C71 /* LocalStorage */,
+				697A2DA02409A61000EADDBA /* AppDelegate.swift */,
 				697A2DC42409A97A00EADDBA /* Container */,
+				695AA279283A4CDE008A7C71 /* LocalStorage */,
 				697A2E33240BC34D00EADDBA /* Network */,
 				697A2E49240BC95400EADDBA /* Utils */,
-				697A2DA02409A61000EADDBA /* AppDelegate.swift */,
 			);
 			path = Infrastructure;
 			sourceTree = "<group>";

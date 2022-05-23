@@ -1,6 +1,6 @@
 /*
- By defining this contract, the manager developed to store data locally can be easily changed from a UserDefaults to a
- CoreData manager for example without affecting the repositories that use it
+ By defining this contract, the manager developed to store data locally can be easily changed from a UserDefaults
+ manager to a CoreData manager for example without affecting the repositories that use it
  */
 
 protocol LocalStorageManagerContract {
