@@ -1,6 +1,6 @@
 # Seat Marvel Characters
 
-## Configuration
+## Project generation
 Cocoapods have been used to install simple libraries that facilitate the development of the app. One to show a loading window and another to simplify the download and temporary persistence of images from the network.
 To be able to generate and compile it, please install this dependency manager by running:
 
